@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -35,12 +37,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(text = "Hello $name!", modifier = modifier)
 }
 
-@Preview(showBackground = true, name = "Telefono 1", widthDp = 200, heightDp = 200)
+//@Preview(showBackground = true, name = "Telefono 1", widthDp = 200, heightDp = 200)
 @Composable
-fun DefaultPreview() {
+fun DefaultPreviewBox() {
     App1Theme {
         Box(
-            modifier = Modifier.fillMaxSize().background(Color.DarkGray),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.DarkGray),
             contentAlignment = Alignment.Center
         ){
             Greeting("Android 1")
@@ -48,3 +52,40 @@ fun DefaultPreview() {
         }
     }
 }
+
+
+@Preview(showBackground = true, name = "Telefono 1", widthDp = 200, heightDp = 200)
+@Composable
+fun DefaultPreview() {
+    App1Theme {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            //verticalArrangement = Arrangement.SpaceEvenly //espacio igual en pantalla. Sin pegarse arriba o abajo
+        //    verticalArrangement = Arrangement.SpaceBetween //Como SwiftUI
+         horizontalAlignment = Alignment.CenterHorizontally //centra
+
+        ){
+            Greeting("Android 1", modifier = Modifier
+                .background(Color.Blue)
+                .weight(weight = 2f) //peso en la pantalla
+            )
+            Greeting("Android 2", modifier = Modifier
+                    .background(Color.Yellow)
+                    .weight(weight = 1f) //peso en la pantalla
+            )
+            //Greeting("Android 3", modifier = Modifier.background(Color.Red))
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
